@@ -22,29 +22,26 @@ To address this drawback, we propose a neural Graph Matching based Collaborative
 </p>
 
 
-## Enviroment requirement
 
-Python version >= 3.7
-
-Install appropriate packages listed in requirements.txt:
-
-*(Note that it may need to appropriatly install the package ```torch-geometric``` based on the CUDA version. Please refer to the official website https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html for more information of installing ```torch-geometric```)*
-
-In the root path of our code, run
+## What are in this Repository
+This repository contains the following contents:
 
 ```
-pip install -r requirements.txt
+/
+├── code/                   --> (The folder containing the source code)
+|   ├── dataloader.py       --> (The code to proceed the data into code-usable format)
+|   ├── main.py             --> (The main code file. The code is run through this file)
+|   ├── model.py            --> (Contains the function of our GMCF model.)
+|   ├── train.py            --> (Contains the code to train and evaluate our GMCF model.)
+├── data/                   --> (The folder containing three used datasets)   
+|   ├── book-crossing/      --> (The book-crossing dataset.)
+|   ├── ml-1m/              --> (The MovieLens 1M dataset.)
+|   ├── taobao/             --> (The Taobao dataset.)
+├── img/                    --> (The images for README (not used for the code))   
+|   ├── GMCF_structure.png  --> (The overall structure of our GMCF model)
+|   ├── running_exmaple.png --> (The differences between GMCF and existing model)
+├── LICENCE                 --> (The licence file)
 ```
-
-## Run the code
-
-```
-cd code
-python main.py --dataset=ml-1m  --dim=64 --hidden_layer=256
-```
-
-For more argument options, please refer to ```main.py```
-
 
 ## Cite our paper
 

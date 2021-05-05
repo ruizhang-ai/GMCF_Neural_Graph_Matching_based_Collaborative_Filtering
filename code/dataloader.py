@@ -110,7 +110,7 @@ class Dataset(InMemoryDataset):
             valid_df.to_csv(f'{backup_path}valid_data.csv', index=False)
             test_df.to_csv(f'{backup_path}test_data.csv', index=False)
 
-
+        print('(Only run at the first time training the dataset)')
         train_graphs = self.data_2_graphs(train_df, dataset='train')
         valid_graphs = self.data_2_graphs(valid_df, dataset='valid')
         test_graphs = self.data_2_graphs(test_df, dataset='test')
@@ -171,7 +171,6 @@ class Dataset(InMemoryDataset):
         self.featurefile = self.raw_file_names[2]
         self.ratingfile  = self.raw_file_names[3]
         graphs, stat_info = self.read_data()
-
         #check whether foler path exist
         if not os.path.exists(f"{self.path}processed/{self.dataset+self.sufix}"):
             os.mkdir(f"{self.path}processed/{self.dataset+self.sufix}")
