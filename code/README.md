@@ -46,14 +46,17 @@ clone this repository:
 ```
 $ git clone https://github.com/ruizhang-ai/GMCF_Neural_Graph_Matching_based_Collaborative_Filtering.git
 ```
-or
-download the repository at:
-[https://github.com/ruizhang-ai/GMCF_Neural_Graph_Matching_based_Collaborative_Filtering/archive/refs/heads/master.zip](https://github.com/ruizhang-ai/GMCF_Neural_Graph_Matching_based_Collaborative_Filtering/archive/refs/heads/master.zip)
 
-
-2. Go to the ```code``` folder and run the ```main.py``` file:
+and go to the folder of the repository:
 ```
-$ cd GMCF_Neural_Graph_Matching_based_Collaborative_Filtering/code
+$ cd GMCF_Neural_Graph_Matching_based_Collaborative_Filtering
+```
+
+Then, our source code is in the folder ```code/``` and the datasets are in the folder ```data/```.
+
+2. Go to the ```code/``` folder and run the ```main.py``` file:
+```
+$ cd code
 $ python main.py --dataset=ml-1m --num_user_features=4 --dim=64 --hidden_layer=256 
 ```
 Main arguments:
