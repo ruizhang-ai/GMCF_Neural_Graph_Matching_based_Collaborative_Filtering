@@ -41,7 +41,7 @@
    $ cd GMCF_Neural_Graph_Matching_based_Collaborative_Filtering
    ```
 
-   Then, our source code is in the folder ```code/``` and the datasets are in the folder ```data/```.
+   Now, our source codes are in the folder ```code/``` and the datasets are in the folder ```data/```.
 
 4. Install other packages listed in requirements.txt:
    ```
