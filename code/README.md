@@ -40,8 +40,20 @@ $ pip install -r requirements.txt
 
 ## Run the code
 
+1. Download our code and data by:
+
+clone this repository:
 ```
-$ cd code
+$ git clone https://github.com/ruizhang-ai/GMCF_Neural_Graph_Matching_based_Collaborative_Filtering.git
+```
+or
+download the repository at:
+[https://github.com/ruizhang-ai/GMCF_Neural_Graph_Matching_based_Collaborative_Filtering/archive/refs/heads/master.zip](https://github.com/ruizhang-ai/GMCF_Neural_Graph_Matching_based_Collaborative_Filtering/archive/refs/heads/master.zip)
+
+
+2. Go to the ```code``` folder and run the ```main.py``` file:
+```
+$ cd GMCF_Neural_Graph_Matching_based_Collaborative_Filtering/code
 $ python main.py --dataset=ml-1m --num_user_features=4 --dim=64 --hidden_layer=256 
 ```
 Main arguments:

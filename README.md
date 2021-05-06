@@ -43,6 +43,10 @@ This repository contains the following contents:
 ├── LICENCE                 --> (The licence file)
 ```
 
+## Run our code
+
+To run our code, please follow the instructions in our [code](code/) folder
+
 ## Cite our paper
 
 Please credit our work by citing the following paper:
