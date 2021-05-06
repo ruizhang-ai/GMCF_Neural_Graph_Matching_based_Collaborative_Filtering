@@ -3,7 +3,8 @@
 
 ## Environmental Requirement
 
-0. You need to set up the environment for running the experiments (Anaconda 3-2020.02 or above and Python 3.7 or above). First, you can install Anaconda by following the instruction from  the [website](https://docs.anaconda.com/anaconda/install/) :
+0. You need to set up the environment for running the experiments (Anaconda 3-2020.02 or above and Python 3.7 or above). First, you can install Anaconda by following the instruction from  the [website](https://docs.anaconda.com/anaconda/install/).
+   
    Next, you can create a virtual environment using the following commands:
    <pre><code>$ conda create -n GMCF python=3.7 anaconda
    $ conda activate GMCF</code></pre>
@@ -29,7 +30,7 @@
    $ pip install torch-spline-conv==latest+${CUDA} -f https://pytorch-geometric.com/whl/torch-${TORCH}.html
    $ pip install torch-geometric==1.4.3
    ```
-3. Download our code and data:
+3. Download the code and data.
 
    clone this repository:
    ```
@@ -43,7 +44,7 @@
 
    Now, our source codes are in the folder ```code/``` and the datasets are in the folder ```data/```.
 
-4. Install other packages listed in requirements.txt:
+4. Install other packages listed in requirements.txt.
    ```
    $ pip install -r requirements.txt
    ```
