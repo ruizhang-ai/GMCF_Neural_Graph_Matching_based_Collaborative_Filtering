@@ -45,7 +45,7 @@ This repository contains the following contents:
 
 ## Run our code
 
-To run our code, please follow the instructions in our [code](code/) folder
+To run our code, please follow the instructions in our [code/](code/) folder.
 
 ## Cite our paper
 
