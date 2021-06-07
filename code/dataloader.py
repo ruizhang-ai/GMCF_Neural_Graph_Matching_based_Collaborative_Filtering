@@ -14,13 +14,12 @@ from icecream import ic
 
 
 class Dataset(InMemoryDataset):
-    def __init__(self, root, dataset, rating_file, sep, sufix='', transform=None, pre_transform=None):
+    def __init__(self, root, dataset, rating_file, sep, transform=None, pre_transform=None):
 
         self.path = root
         self.dataset = dataset
         self.rating_file = rating_file
         self.sep = sep
-        self.sufix=sufix
         self.store_backup = True
 
         super(Dataset, self).__init__(root, transform, pre_transform)
@@ -38,8 +37,8 @@ class Dataset(InMemoryDataset):
 
     @property
     def processed_file_names(self):
-        return ['{}/{}.dataset'.format(self.dataset+self.sufix, self.dataset),
-                '{}/{}.statinfo'.format(self.dataset+self.sufix, self.dataset)]
+        return ['{}/{}.dataset'.format(self.dataset, self.dataset),
+                '{}/{}.statinfo'.format(self.dataset, self.dataset)]
 
 
     def download(self):
@@ -97,8 +96,8 @@ class Dataset(InMemoryDataset):
         error_num = 0
 
         ratings_df = pd.read_csv(self.ratingfile, sep=self.sep, header=None)
-        train_df, test_df = train_test_split(ratings_df, test_size=0.2, random_state=random.randint(0,1000), stratify=ratings_df[[0,2]])
-        train_df, valid_df = train_test_split(train_df,  test_size=0.25, random_state=random.randint(0,1000), stratify=train_df[[0,2]])
+        train_df, test_df = train_test_split(ratings_df, test_size=0.4, random_state=random.randint(0,1000), stratify=ratings_df[[0,2]])
+        test_df, valid_df = train_test_split(test_df,  test_size=0.5, random_state=random.randint(0,1000), stratify=test_df[[0,2]])
 
         # store a backup of train/valid/test dataframe
         if self.store_backup:
@@ -172,8 +171,8 @@ class Dataset(InMemoryDataset):
         self.ratingfile  = self.raw_file_names[3]
         graphs, stat_info = self.read_data()
         #check whether foler path exist
-        if not os.path.exists(f"{self.path}processed/{self.dataset+self.sufix}"):
-            os.mkdir(f"{self.path}processed/{self.dataset+self.sufix}")
+        if not os.path.exists(f"{self.path}processed/{self.dataset+self}"):
+            os.mkdir(f"{self.path}processed/{self.dataset+self}")
 
 
         data, slices = self.collate(graphs)

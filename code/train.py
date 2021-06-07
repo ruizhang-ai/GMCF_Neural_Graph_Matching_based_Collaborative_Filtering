@@ -22,7 +22,7 @@ def train(args, data_info, show_loss):
 
     optimizer = torch.optim.Adam(
             filter(lambda p: p.requires_grad, model.parameters()), 
-            weight_decay=1e-5, 
+            weight_decay=args.l2_weight, 
             lr=args.lr
     )
     crit = torch.nn.BCELoss()
@@ -50,6 +50,7 @@ def train(args, data_info, show_loss):
 
         # evaluation
         val_auc, val_logloss, val_ndcg5, val_ndcg10 = evaluate(model, val_loader, device)
+        #val_auc, val_logloss, val_ndcg5, val_ndcg10 = 0, 0, 0, 0 
         test_auc, test_logloss, test_ndcg5, test_ndcg10 = evaluate(model, test_loader, device)
 
         print('Epoch: {:03d}, Loss: {:.5f}, AUC: {:.5f}/{:.5f}, Logloss: {:.5f}/{:.5f}, NDCG@5: {:.5f}/{:.5f} NDCG@10: {:.5f}/{:.5f}'.
@@ -83,7 +84,9 @@ def evaluate(model, data_loader, device):
     user_ids = np.concatenate(user_ids, 0)
 
     ndcg5 = cal_ndcg(predictions, labels, user_ids, 5)
+    #ndcg5 = 0
     ndcg10 = cal_ndcg(predictions, labels, user_ids, 10)
+    #ndcg10 = 0
     auc = roc_auc_score(labels, predictions)
     logloss = log_loss(labels, predictions)
 
