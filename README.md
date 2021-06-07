@@ -35,7 +35,6 @@ This repository contains the following contents:
 |   ├── train.py            --> (Contains the code to train and evaluate our GMCF model.)
 ├── data/                   --> (The folder containing three used datasets)   
 |   ├── book-crossing/      --> (The book-crossing dataset.)
-|   ├── ml-1m/              --> (The MovieLens 1M dataset.)
 |   ├── taobao/             --> (The Taobao dataset.)
 ├── img/                    --> (The images for README (not used for the code))   
 |   ├── GMCF_structure.png  --> (The overall structure of our GMCF model)

@@ -20,9 +20,9 @@
 
    *(Note that it may need to appropriatly install the package ```torch-geometric``` based on the CUDA version (or CPU version if GPU is not avaliable). Please refer to the official website https://pytorch-geometric.readthedocs.io/en/1.4.3/notes/installation.html for more information of installing prerequisites of ```torch-geometric```)*
 
-   For example (CPU only version):
+   For example (CUDA=10.1):
    ```
-   $ CUDA=cpu
+   $ CUDA=cu101
    $ TORCH=1.6.0
    $ pip install torch-scatter==latest+${CUDA} -f https://pytorch-geometric.com/whl/torch-${TORCH}.html
    $ pip install torch-sparse==latest+${CUDA} -f https://pytorch-geometric.com/whl/torch-${TORCH}.html
@@ -55,7 +55,7 @@
 Go to the ```code/``` folder and run the ```main.py``` file:
    ```
    $ cd code
-   $ python main.py --dataset=ml-1m --num_user_features=4 --dim=64 --hidden_layer=256 
+   $ python main.py --dataset=book-crossing --num_user_features=3 --dim=64 --hidden_layer=256 
    ```
    Main arguments:
    ```
@@ -64,7 +64,7 @@ Go to the ```code/``` folder and run the ```main.py``` file:
    --hidden_layer: the MLP hidden layer for the inner interaction modeling function
    --l2_weight: the regularization weight
    --lr: the learning rate
-   --num_user_features: the number of user attributes. Currently we assume all users have the same number of attributes. Here are 4 for ml-1m, 3 for book-crossing and 8 for taobao.
+   --num_user_features: the number of user attributes. Currently we assume all users have the same number of attributes. Here are 3 for book-crossing, 8 for taobao and 4 for ml-1m.
    ```
    For more argument options, please refer to ```main.py```
 

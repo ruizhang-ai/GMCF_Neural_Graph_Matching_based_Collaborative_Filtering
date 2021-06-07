@@ -84,9 +84,7 @@ def evaluate(model, data_loader, device):
     user_ids = np.concatenate(user_ids, 0)
 
     ndcg5 = cal_ndcg(predictions, labels, user_ids, 5)
-    #ndcg5 = 0
     ndcg10 = cal_ndcg(predictions, labels, user_ids, 10)
-    #ndcg10 = 0
     auc = roc_auc_score(labels, predictions)
     logloss = log_loss(labels, predictions)
 
