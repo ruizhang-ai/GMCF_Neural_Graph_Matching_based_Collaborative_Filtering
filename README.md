@@ -2,7 +2,7 @@
 
 This is our implementation for the paper:
 
-Yixin Su, Rui Zhang*, Sarah Erfani, Junhao Gan, **Neural Graph Matching based Collaborative Filtering**. *International Conference on Research and Development in Information Retrieval* (SIGIR) 2021. [link](https://arxiv.org/abs/2105.04067)
+Yixin Su, Rui Zhang*, Sarah Erfani, Junhao Gan, **Neural Graph Matching based Collaborative Filtering**. *International Conference on Research and Development in Information Retrieval* (SIGIR) 2021. <!--[link](https://arxiv.org/abs/2105.04067) -->
 
 ## Description
 
@@ -35,6 +35,7 @@ This repository contains the following contents:
 |   ├── train.py            --> (Contains the code to train and evaluate our GMCF model.)
 ├── data/                   --> (The folder containing three used datasets)   
 |   ├── book-crossing/      --> (The book-crossing dataset.)
+|   ├── ml-1m/              --> (The movielens dataset.)
 |   ├── taobao/             --> (The Taobao dataset.)
 ├── img/                    --> (The images for README (not used for the code))   
 |   ├── GMCF_structure.png  --> (The overall structure of our GMCF model)
