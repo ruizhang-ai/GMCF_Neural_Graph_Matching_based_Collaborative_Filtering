@@ -10,7 +10,7 @@ Each dataset folder contains four files:
 ├── user_dict.pkl          --> (A dictionary containing the attributes of each user)
 ```
 
-## To run our code on your own datasets, generate file using the following format:
+## To run our code on your own datasets, generate files using the following format:
 
 ```
 feature_dict.pkl:
