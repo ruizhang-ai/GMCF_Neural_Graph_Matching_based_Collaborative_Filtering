@@ -2,7 +2,7 @@
 
 This is our implementation for the paper:
 
-Yixin Su, Rui Zhang*, Sarah Erfani, Junhao Gan, **Neural Graph Matching based Collaborative Filtering**. *International Conference on Research and Development in Information Retrieval* (SIGIR) 2021. <!--[link](https://arxiv.org/abs/2105.04067) -->
+Yixin Su, Rui Zhang*, Sarah Erfani, Junhao Gan, **Neural Graph Matching based Collaborative Filtering**. *International Conference on Research and Development in Information Retrieval* (SIGIR) 2021. [link](https://arxiv.org/abs/2105.04067)
 
 ## Description
 
