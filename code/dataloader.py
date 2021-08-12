@@ -171,8 +171,8 @@ class Dataset(InMemoryDataset):
         self.ratingfile  = self.raw_file_names[3]
         graphs, stat_info = self.read_data()
         #check whether foler path exist
-        if not os.path.exists(f"{self.path}processed/{self.dataset+self}"):
-            os.mkdir(f"{self.path}processed/{self.dataset+self}")
+        if not os.path.exists(f"{self.path}processed/{self.dataset}"):
+            os.mkdir(f"{self.path}processed/{self.dataset}")
 
 
         data, slices = self.collate(graphs)
