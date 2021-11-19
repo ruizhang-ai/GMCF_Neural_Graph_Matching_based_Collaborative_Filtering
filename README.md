@@ -9,7 +9,7 @@ Yixin Su, Rui Zhang*, Sarah Erfani, Junhao Gan, **Neural Graph Matching based Co
 User and item attributes are essential side-information; their interactions (i.e., their co-occurrence in the sample data) can significantly enhance prediction accuracy in various recommender systems. We identify two different types of attribute interactions, *inner interactions* and *cross interactions*: inner interactions are those between *only* user attributes or those between *only* item attributes; cross interactions are those between user attributes and item attributes. Existing models do not distinguish the two types of attribute interactions, which may not be the most effective way to exploit the information carried by the interactions. 
 
 <p align="center">
-  <img src="https://github.com/suyixin12123/GMCF/blob/main/img/running_exmaple.png", alt="Differences" width="600">
+  <img src="https://github.com/ruizhang-ai/GMCF_Neural_Graph_Matching_based_Collaborative_Filtering/blob/master/img/running_exmaple.png", alt="Differences" width="600">
   <p align="center"><em>Figure1: Illustration of the differences between our GMCF model (left) and existing graph-based work (right). GMCF treats attribute interactions differently in a structure of graph matching, while existing work treats all attribute interactions equally.</em></p>
 </p>
 
@@ -17,7 +17,7 @@ User and item attributes are essential side-information; their interactions (i.e
 To address this drawback, we propose a neural Graph Matching based Collaborative Filtering model (GMCF), which effectively captures the two types of attribute interactions through modeling and aggregating attribute interactions in a graph matching structure for recommendation. In our model, the two essential recommendation procedures, characteristic learning and preference matching, are explicitly conducted through graph learning (based on inner interactions) and node matching (based on cross interactions), respectively.
 
 <p align="center">
-  <img src="https://github.com/suyixin12123/GMCF/blob/main/img/GMCF_structure.png", alt="Model Structure" width="800">
+  <img src="https://github.com/ruizhang-ai/GMCF_Neural_Graph_Matching_based_Collaborative_Filtering/blob/master/img/GMCF_structure.png", alt="Model Structure" width="800">
   <p align="center"><em>Figure2: An Overview of the GMCF Model.</em></p>
 </p>
 
