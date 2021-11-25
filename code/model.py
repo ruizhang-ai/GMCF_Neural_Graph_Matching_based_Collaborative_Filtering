@@ -10,6 +10,7 @@ from torch_geometric.nn.inits import glorot, zeros
 from torch.nn import Linear
 import numpy as np
 import time
+from icecream import ic
 
 
 
@@ -21,7 +22,7 @@ class inner_GNN(MessagePassing):
         self.lin1 = nn.Linear(dim, hidden_layer)
         self.lin2 = nn.Linear(hidden_layer, dim)
         self.act = nn.ReLU()
-        self.drop = nn.Dropout(p=0.3)
+        self.drop = nn.Dropout(p=0.5)
 
     def forward(self, x, edge_index, edge_weight=None):
         # x has shape [N, dim]
@@ -33,7 +34,7 @@ class inner_GNN(MessagePassing):
         # x_j has shape [E, dim]
 
         # pairwise analysis
-        pairwise_analysis = x_i + x_j
+        pairwise_analysis = x_i * x_j
         pairwise_analysis = self.lin1(pairwise_analysis)
         pairwise_analysis = self.act(pairwise_analysis)
         pairwise_analysis = self.lin2(pairwise_analysis)
@@ -54,7 +55,7 @@ class inner_GNN(MessagePassing):
 
 class cross_GNN(MessagePassing):
     def __init__(self, dim, hidden_layer):
-        super(cross_GNN, self).__init__(aggr='add')
+        super(cross_GNN, self).__init__(aggr='mean')
 
     def forward(self, x, edge_index, edge_weight=None):
         # x has shape [N, dim]
@@ -123,7 +124,8 @@ class GMCF(nn.Module):
         node_emb = self.feature_embedding(node_id)
         inner_edge_index = data.edge_index
         outer_edge_index = torch.transpose(data.edge_attr, 0, 1)
-
+        outer_edge_index = self.outer_offset(batch, self.num_user_features, outer_edge_index)
+        
 
         inner_node_message = self.inner_gnn(node_emb, inner_edge_index)
         outer_node_message = self.outer_gnn(node_emb, outer_edge_index)
@@ -159,6 +161,17 @@ class GMCF(nn.Module):
         test = torch.sum(F.one_hot(multi_hot, ones.size(0)), dim=0) * (torch.max(batch) + 1 )
 
         return batch + test
+
+    def outer_offset(self, batch, user_node_num, outer_edge_index):
+        ones = torch.ones_like(batch)
+        nodes_per_graph = global_add_pool(ones, batch)
+        inter_per_graph = (nodes_per_graph - user_node_num) * user_node_num * 2
+        cum_num = torch.cat((torch.LongTensor([0]).to(self.device), torch.cumsum(nodes_per_graph, dim=0)[:-1]))
+        offset_list = torch.repeat_interleave(cum_num, inter_per_graph, dim=0).repeat(2, 1)
+        outer_edge_index_offset = outer_edge_index + offset_list
+        return outer_edge_index_offset
+        
+
 
 
 

@@ -14,13 +14,14 @@ from icecream import ic
 
 
 class Dataset(InMemoryDataset):
-    def __init__(self, root, dataset, rating_file, sep, transform=None, pre_transform=None):
+    def __init__(self, root, dataset, rating_file, sep, args, transform=None, pre_transform=None):
 
         self.path = root
         self.dataset = dataset
         self.rating_file = rating_file
         self.sep = sep
         self.store_backup = True
+        self.args = args
 
         super(Dataset, self).__init__(root, transform, pre_transform)
         self.data, self.slices = torch.load(self.processed_paths[0])
@@ -96,8 +97,8 @@ class Dataset(InMemoryDataset):
         error_num = 0
 
         ratings_df = pd.read_csv(self.ratingfile, sep=self.sep, header=None)
-        train_df, test_df = train_test_split(ratings_df, test_size=0.4, random_state=random.randint(0,1000), stratify=ratings_df[[0,2]])
-        test_df, valid_df = train_test_split(test_df,  test_size=0.5, random_state=random.randint(0,1000), stratify=test_df[[0,2]])
+        train_df, test_df = train_test_split(ratings_df, test_size=0.4, random_state=self.args.random_seed, stratify=ratings_df[[0,2]])
+        test_df, valid_df = train_test_split(test_df,  test_size=0.5, random_state=self.args.random_seed, stratify=test_df[[0,2]])
 
         # store a backup of train/valid/test dataframe
         if self.store_backup:
