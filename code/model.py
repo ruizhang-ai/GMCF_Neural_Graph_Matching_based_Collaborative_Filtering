@@ -27,6 +27,10 @@ class inner_GNN(MessagePassing):
     def forward(self, x, edge_index, edge_weight=None):
         # x has shape [N, dim]
         # edge_index has shape [2, E]
+        #try:
+        #    return self.propagate(edge_index, x=x, edge_weight=edge_weight)
+        #except:
+        x = x.squeeze()
         return self.propagate(edge_index, x=x, edge_weight=edge_weight)
 
     def message(self, x_i, x_j, edge_weight):
@@ -60,6 +64,10 @@ class cross_GNN(MessagePassing):
     def forward(self, x, edge_index, edge_weight=None):
         # x has shape [N, dim]
         # edge_index has shape [2, E]
+        #try:
+        #    return self.propagate(edge_index, x=x, edge_weight=edge_weight)
+        #except:
+        x = x.squeeze()
         return self.propagate(edge_index, x=x, edge_weight=edge_weight)
 
     #def message(self, edge_index_i, x_i, x_j, edge_weight, num_nodes):
@@ -131,6 +139,9 @@ class GMCF(nn.Module):
         outer_node_message = self.outer_gnn(node_emb, outer_edge_index)
 
         # aggregate all message
+        if len(outer_node_message.size()) < len(node_emb.size()):
+           outer_node_message = outer_node_message.unsqueeze(1) 
+           inner_node_message = inner_node_message.unsqueeze(1) 
         updated_node_input = torch.cat((node_emb, inner_node_message, outer_node_message), 1)
         updated_node_input = torch.transpose(updated_node_input, 0, 1)
 
