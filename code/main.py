@@ -19,12 +19,23 @@ parser.add_argument('--lr', type=float, default=0.001, help='learning rate')
 parser.add_argument('--batch_size', type=int, default=128, help='batch size')
 parser.add_argument('--n_epoch', type=int, default=50, help='the number of epochs')
 parser.add_argument('--hidden_layer', type=int, default=256, help='neural hidden layer')
-parser.add_argument('--num_user_features', type=int, default=3, help='the number of user attributes')
+parser.add_argument('--num_user_features', type=int, default=-1, help='the number of user attributes')
 parser.add_argument('--random_seed', type=int, default=2019, help='size of common item be counted')
 #random.choice(range(2000))
 args = parser.parse_args()
 
 sep = ','
+
+if args.dataset == 'ml-1m':
+    args.num_user_features = 4
+elif args.dataset == 'book-crossing':
+    args.num_user_features = 3 
+elif args.dataset == 'taobao':
+    args.num_user_features = 8 
+else:
+    print("please specify the number of user features: num_user_features")
+    
+
 
 #dataset = Dataset_larger('../data/', args.dataset, args.rating_file, sep, 10)
 dataset = Dataset('../data/', args.dataset, args.rating_file, sep, args)
